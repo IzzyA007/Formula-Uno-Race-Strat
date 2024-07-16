@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react'
+import TeamSelect from "./components/team-select";
 import './App.css';
 
 function App() {
+
+  const [backendData, setBackendData] = useState([{}])// Contains backend data obtain from the backend api
+
+  // Fetch api backend data and store it in a variable
+  useEffect(() =>{
+    fetch("/api").then(
+      response => response.json()
+    ).then(
+      data => {
+        setBackendData(data)
+      }
+    )
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TeamSelect/>
+      {/*{(typeof backendData.users === 'undefined') ? (*/}
+      {/*    <p>Loading..</p>*/}
+      {/*  ): (*/}
+      {/*    backendData.users.map((user, i) =>(*/}
+      {/*      <p key={i}>{user}</p>*/}
+      {/*    ))*/}
+      {/*)}*/}
     </div>
   );
 }
