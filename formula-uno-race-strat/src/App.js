@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import TeamSelect from "./components/team-select";
+import RaceComponents from "./components/race-parameters";
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       {/*      <p key={i}>{user}</p>*/}
       {/*    ))*/}
       {/*)}*/}
+      {/*<RaceComponents/>*/}
     </div>
   );
 }
