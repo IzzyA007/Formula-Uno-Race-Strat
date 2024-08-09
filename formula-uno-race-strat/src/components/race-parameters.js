@@ -1,10 +1,9 @@
-import React, { useContext, Component } from 'react';
-
+import React, { Component } from 'react';
 
 class RaceComponents extends Component {
     
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             result: ""
@@ -12,19 +11,21 @@ class RaceComponents extends Component {
     }
     
     render() {
+        const { team } = this.props; // Get the team prop
+
         return (
-            <section className = "the-page">
+            <section className="the-page">
                 <h1>Formula 1 Strategy Simulator</h1>
-                <h2>You selected </h2>
+                <h2>You selected {team}</h2> {/* Display the selected team */}
                 <div className="race-settings">
                     <h2>Select Race Conditions</h2>
-                    {/*Circuit selection menu*/}
-                    <div class="dropdown">
+                    {/* Circuit selection menu */}
+                    <div className="dropdown">
                         <button>Circuit</button>
-                        <div class="dropdown-content">
+                        <div className="dropdown-content">
                             <button>Bahrain</button>
                             <button>Saudi Arabia</button>
-                            <button>Australlia</button>
+                            <button>Australia</button>
                             <button>Japan</button>
                             <button>China</button>
                             <button>Miami</button>
@@ -48,64 +49,56 @@ class RaceComponents extends Component {
                         </div>
                     </div>
                     
-                    {/*Weather selection menu*/}
-                    <div class="dropdown">
+                    {/* Weather selection menu */}
+                    <div className="dropdown">
                         <button>Weather Conditions</button>
-                        <div class="dropdown-content">
-                            <div class="input-group">
-                                <label for="air-pressure">Air Pressure (mbar):</label>
+                        <div className="dropdown-content">
+                            <div className="input-group">
+                                <label htmlFor="air-pressure">Air Pressure (mbar):</label>
                                 <input type="number" id="air-pressure" name="airpressure" min="0" max="100" step="1" />
                             </div>
-                            <div class="input-group">
-                                <label for="wind-id">Wind Speed (m/s):</label>
+                            <div className="input-group">
+                                <label htmlFor="wind-id">Wind Speed (m/s):</label>
                                 <input type="number" id="wind-id" name="wind" min="0" max="100" step="1" />
                             </div>
                             
-                            <div class="input-group">
-                                <label for="temp-id">Temperature (C):</label>
+                            <div className="input-group">
+                                <label htmlFor="temp-id">Temperature (C):</label>
                                 <input type="number" id="temp-id" name="temperature" min="0" max="100" step="1" />
                             </div>
-                            <div class="input-group">
-                                <label for="humidity-1">Humidity (%):</label>
+                            <div className="input-group">
+                                <label htmlFor="humidity-1">Humidity (%):</label>
                                 <input type="number" id="humidity" name="humidity" min="0" max="100" step="1" />
                             </div>
-                            <div class="input-group">
-                                <label for="wind-id">Track Temperature (C):</label>
+                            <div className="input-group">
+                                <label htmlFor="wind-id">Track Temperature (C):</label>
                                 <input type="number" id="wind-id" name="wind" min="0" max="100" step="1" />
                             </div>
                             
-                            
-                            <div class="input-group">
+                            <div className="input-group">
                                 <label>Rainfall:</label>
                                 <input type="radio" id="rain" name="rain" value="rain"/>
-                                <label for="rain">Rain</label>
+                                <label htmlFor="rain">Rain</label>
                                 <input type="radio" id="no-rain" name="rain" value="no-rain"/>
-                                <label for="no-rain">No Rain</label>
+                                <label htmlFor="no-rain">No Rain</label>
                             </div>
-                            
                         </div>
                     </div>
                     
-                    {/*Position selection menu*/}
-                    <div class="dropdown">
+                    {/* Position selection menu */}
+                    <div className="dropdown">
                         <button>Starting Position</button>
-                        <div class="dropdown-content">
-                            <div class="input-group">
-                                <div class="input-group">
-                                    <label for="wind-id">Racer 1 starting position:</label>
-                                    <input type="number" id="wind-id" name="wind" min="0" max="20" step="1" />
-                                </div>
-                                <div class="input-group">
-                                    <label for="wind-id">Racer 2 starting position:</label>
-                                    <input type="number" id="wind-id" name="wind" min="0" max="20" step="1" />
-                                </div>
+                        <div className="dropdown-content">
+                            <div className="input-group">
+                                <label htmlFor="wind-id">Racer 1 starting position:</label>
+                                <input type="number" id="wind-id" name="wind" min="0" max="20" step="1" />
                             </div>
-                            
+                            <div className="input-group">
+                                <label htmlFor="wind-id">Racer 2 starting position:</label>
+                                <input type="number" id="wind-id" name="wind" min="0" max="20" step="1" />
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
                 </div>
             </section>
         );
