@@ -4,11 +4,10 @@ import RaceComponents from "./components/race-parameters";
 import './App.css';
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]); // Contains backend data obtained from the backend api
-  const [counter, setCounter] = useState(1); // Tracks the current step
-  const [selectedTeam, setSelectedTeam] = useState(''); // Tracks the selected team
+  const [backendData, setBackendData] = useState([{}]); 
+  const [counter, setCounter] = useState(1); 
+  const [selectedTeam, setSelectedTeam] = useState(''); 
 
-  // Fetch api backend data and store it in a variable
   useEffect(() => {
     fetch("/api").then(
       response => response.json()
@@ -19,7 +18,18 @@ function App() {
     )
   }, []);
 
-  // Moves to next step
+  // Fetch car data when the team is selected
+  useEffect(() => {
+    if (selectedTeam) {
+      fetch(`/race-statistics?team=${selectedTeam}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Car data:', data);
+        })
+        .catch(error => console.error('Error fetching race data:', error));
+    }
+  }, [selectedTeam]);
+
   const addRowHandler = () => {
     setCounter(counter + 1);
   };
