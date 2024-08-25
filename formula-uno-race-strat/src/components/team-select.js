@@ -10,13 +10,32 @@ import williamsSymbol from '../team_logos/williamsSymbol.png';
 import kickSauberSymbol from '../team_logos/kickSauberSymbol.png';
 import RBSymbol from '../team_logos/RBSymbol.png';
 
+import {f1Teams} from "../utilities/dictionaries";
+export let driverName1 = ""
+export let driverName2 = ""
+export let driverNumber1 = ""
+export let driverNumber2 = ""
 const TeamSelect = ({ onNext, setTeam }) => {
 
+//  Function used to recive the respective drivers and driver numbers from user selected team
   const handleCardClick = (team) => {
     console.log(`${team} card clicked!`);
     setTeam(team); // Set the selected team
+
+    // Initialize drivers' name and numbers based off the team the user selected
+    driverName1 = f1Teams[team][0].name
+    driverName2 = f1Teams[team][1].name
+    driverNumber1 = f1Teams[team][0].number
+    driverNumber2 = f1Teams[team][1].number
+
+    console.log(`Driver name 1 for ${team} is ${driverName1} and the other one is ${driverName2}`)
+    console.log(`Driver number 1 for ${team} is ${driverNumber1} and the other one is ${driverNumber2}`)
     onNext(); // Call the onNext function to move to the next step
   };
+
+
+// ChatGPT shit
+  
 
   return (
     <section className="the-page">
