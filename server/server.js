@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 
+
 function getTeamNameFromRequest(req) {
   const teamName = req.query.team;
   if (!teamName) {
